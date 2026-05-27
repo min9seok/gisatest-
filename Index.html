@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정보처리기사 CBT 100문제</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin:0;background:#f3f4f6;color:#111827}
+header{background:white;padding:16px;border-bottom:1px solid #ddd;position:sticky;top:0;z-index:10}
+h1{font-size:21px;margin:0 0 8px}
+button{border:0;border-radius:10px;padding:13px 18px;font-size:16px;font-weight:700;margin:4px}
+#gradeBtn{background:#2563eb;color:white}#resetBtn{background:#6b7280;color:white}
+main{padding:14px;max-width:900px;margin:auto}
+.q{background:white;border-radius:12px;padding:15px;margin:12px 0;border:1px solid #e5e7eb}
+.q h3{font-size:17px;margin:0 0 12px;line-height:1.45}
+label{display:block;padding:10px;margin:7px 0;border:1px solid #d1d5db;border-radius:8px;background:#fafafa}
+input{transform:scale(1.2);margin-right:8px}
+.correct{border:2px solid #16a34a!important;background:#ecfdf5!important}
+.wrong{border:2px solid #dc2626!important;background:#fef2f2!important}
+#result{background:#111827;color:white;border-radius:12px;padding:16px;margin:16px 0;font-size:17px;line-height:1.6;display:none}
+</style>
+</head>
+<body>
+<header>
+<h1>정보처리기사 필기 CBT 모의고사 100문제</h1>
+<div>과목별 20문제 · 4지선다 · 채점 가능</div>
+<button id="gradeBtn" type="button">채점하기</button>
+<button id="resetBtn" type="button">초기화</button>
+</header>
+<main>
+<div id="result"></div>
+<form id="exam">
+<h2>1과목 소프트웨어 설계</h2>
+<div class="q" id="qbox1" data-answer="1"><h3>1. 요구사항 개발 프로세스의 순서로 가장 적절한 것은?</h3>
+<label id="q1o1"><input type="radio" name="q1" value="1">1. 도출-분석-명세-확인</label>
+<label id="q1o2"><input type="radio" name="q1" value="2">2. 분석-도출-확인-명세</label>
+<label id="q1o3"><input type="radio" name="q1" value="3">3. 명세-도출-분석-확인</label>
+<label id="q1o4"><input type="radio" name="q1" value="4">4. 확인-명세-분석-도출</label>
+</div>
+<div class="q" id="qbox2" data-answer="3"><h3>2. UML 다이어그램 중 시스템의 동적 행위를 표현하는 것은?</h3>
+<label id="q2o1"><input type="radio" name="q2" value="1">1. 클래스 다이어그램</label>
+<label id="q2o2"><input type="radio" name="q2" value="2">2. 객체 다이어그램</label>
+<label id="q2o3"><input type="radio" name="q2" value="3">3. 시퀀스 다이어그램</label>
+<label id="q2o4"><input type="radio" name="q2" value="4">4. 컴포넌트 다이어그램</label>
+</div>
+<div class="q" id="qbox3" data-answer="2"><h3>3. 객체지향의 캡슐화에 대한 설명으로 옳은 것은?</h3>
+<label id="q3o1"><input type="radio" name="q3" value="1">1. 상위 클래스의 속성을 물려받는 것</label>
+<label id="q3o2"><input type="radio" name="q3" value="2">2. 데이터와 연산을 하나로 묶고 접근을 제한하는 것</label>
+<label id="q3o3"><input type="radio" name="q3" value="3">3. 동일 이름의 메서드가 여러 형태로 동작하는 것</label>
+<label id="q3o4"><input type="radio" name="q3" value="4">4. 객체 간 메시지 전달을 금지하는 것</label>
+</div>
+<div class="q" id="qbox4" data-answer="1"><h3>4. 디자인 패턴 중 객체를 생성하는 인터페이스를 정의하되 인스턴스 생성은 서브클래스가 결정하게 하는 패턴은?</h3>
+<label id="q4o1"><input type="radio" name="q4" value="1">1. Factory Method</label>
+<label id="q4o2"><input type="radio" name="q4" value="2">2. Observer</label>
+<label id="q4o3"><input type="radio" name="q4" value="3">3. Decorator</label>
+<label id="q4o4"><input type="radio" name="q4" value="4">4. Strategy</label>
+</div>
+<div class="q" id="qbox5" data-answer="2"><h3>5. 소프트웨어 아키텍처 4+1 View에서 논리적 관점은 주로 무엇을 다루는가?</h3>
+<label id="q5o1"><input type="radio" name="q5" value="1">1. 배포 노드</label>
+<label id="q5o2"><input type="radio" name="q5" value="2">2. 기능 요구사항</label>
+<label id="q5o3"><input type="radio" name="q5" value="3">3. 프로세스 동시성</label>
+<label id="q5o4"><input type="radio" name="q5" value="4">4. 물리 저장 구조</label>
+</div>
+<div class="q" id="qbox6" data-answer="4"><h3>6. 자료 흐름도 DFD의 구성 요소가 아닌 것은?</h3>
+<label id="q6o1"><input type="radio" name="q6" value="1">1. Process</label>
+<label id="q6o2"><input type="radio" name="q6" value="2">2. Data Store</label>
+<label id="q6o3"><input type="radio" name="q6" value="3">3. Data Flow</label>
+<label id="q6o4"><input type="radio" name="q6" value="4">4. Class</label>
+</div>
+<div class="q" id="qbox7" data-answer="1"><h3>7. CASE 도구의 장점으로 가장 적절한 것은?</h3>
+<label id="q7o1"><input type="radio" name="q7" value="1">1. 개발 표준화와 문서화 지원</label>
+<label id="q7o2"><input type="radio" name="q7" value="2">2. 코드 실행 속도 향상</label>
+<label id="q7o3"><input type="radio" name="q7" value="3">3. 하드웨어 장애 제거</label>
+<label id="q7o4"><input type="radio" name="q7" value="4">4. 사용자 인증 대체</label>
+</div>
+<div class="q" id="qbox8" data-answer="2"><h3>8. 애자일 개발 방법론의 특징으로 옳은 것은?</h3>
+<label id="q8o1"><input type="radio" name="q8" value="1">1. 변경을 엄격히 금지한다</label>
+<label id="q8o2"><input type="radio" name="q8" value="2">2. 고객과 지속적으로 협업한다</label>
+<label id="q8o3"><input type="radio" name="q8" value="3">3. 대규모 문서만 중시한다</label>
+<label id="q8o4"><input type="radio" name="q8" value="4">4. 최종 단계에서만 테스트한다</label>
+</div>
+<div class="q" id="qbox9" data-answer="4"><h3>9. HIPO의 구성 요소가 아닌 것은?</h3>
+<label id="q9o1"><input type="radio" name="q9" value="1">1. 가시적 도표</label>
+<label id="q9o2"><input type="radio" name="q9" value="2">2. 총체적 도표</label>
+<label id="q9o3"><input type="radio" name="q9" value="3">3. 세부적 도표</label>
+<label id="q9o4"><input type="radio" name="q9" value="4">4. 상태 전이도</label>
+</div>
+<div class="q" id="qbox10" data-answer="4"><h3>10. 객체지향 설계 원칙 SOLID에 해당하지 않는 것은?</h3>
+<label id="q10o1"><input type="radio" name="q10" value="1">1. 단일 책임 원칙</label>
+<label id="q10o2"><input type="radio" name="q10" value="2">2. 개방 폐쇄 원칙</label>
+<label id="q10o3"><input type="radio" name="q10" value="3">3. 리스코프 치환 원칙</label>
+<label id="q10o4"><input type="radio" name="q10" value="4">4. 데이터 중복 원칙</label>
+</div>
+<div class="q" id="qbox11" data-answer="1"><h3>11. 결합도 중 가장 결합도가 낮은 것은?</h3>
+<label id="q11o1"><input type="radio" name="q11" value="1">1. 자료 결합도</label>
+<label id="q11o2"><input type="radio" name="q11" value="2">2. 공통 결합도</label>
+<label id="q11o3"><input type="radio" name="q11" value="3">3. 내용 결합도</label>
+<label id="q11o4"><input type="radio" name="q11" value="4">4. 제어 결합도</label>
+</div>
+<div class="q" id="qbox12" data-answer="3"><h3>12. 응집도 중 가장 바람직한 것은?</h3>
+<label id="q12o1"><input type="radio" name="q12" value="1">1. 우연적 응집도</label>
+<label id="q12o2"><input type="radio" name="q12" value="2">2. 논리적 응집도</label>
+<label id="q12o3"><input type="radio" name="q12" value="3">3. 기능적 응집도</label>
+<label id="q12o4"><input type="radio" name="q12" value="4">4. 시간적 응집도</label>
+</div>
+<div class="q" id="qbox13" data-answer="1"><h3>13. UI 설계 원칙 중 사용자가 결과를 쉽게 예측할 수 있어야 한다는 원칙은?</h3>
+<label id="q13o1"><input type="radio" name="q13" value="1">1. 직관성</label>
+<label id="q13o2"><input type="radio" name="q13" value="2">2. 유효성</label>
+<label id="q13o3"><input type="radio" name="q13" value="3">3. 학습성</label>
+<label id="q13o4"><input type="radio" name="q13" value="4">4. 유연성</label>
+</div>
+<div class="q" id="qbox14" data-answer="1"><h3>14. 객체 상태 변경 시 의존 객체에 통지하는 패턴은?</h3>
+<label id="q14o1"><input type="radio" name="q14" value="1">1. Observer</label>
+<label id="q14o2"><input type="radio" name="q14" value="2">2. Singleton</label>
+<label id="q14o3"><input type="radio" name="q14" value="3">3. Builder</label>
+<label id="q14o4"><input type="radio" name="q14" value="4">4. Adapter</label>
+</div>
+<div class="q" id="qbox15" data-answer="2"><h3>15. 소프트웨어 생명주기 모형 중 위험 분석을 강조하는 모형은?</h3>
+<label id="q15o1"><input type="radio" name="q15" value="1">1. 폭포수 모형</label>
+<label id="q15o2"><input type="radio" name="q15" value="2">2. 나선형 모형</label>
+<label id="q15o3"><input type="radio" name="q15" value="3">3. V 모형</label>
+<label id="q15o4"><input type="radio" name="q15" value="4">4. 프로토타입 모형</label>
+</div>
+<div class="q" id="qbox16" data-answer="4"><h3>16. 요구사항 명세서가 가져야 할 특성으로 부적절한 것은?</h3>
+<label id="q16o1"><input type="radio" name="q16" value="1">1. 완전성</label>
+<label id="q16o2"><input type="radio" name="q16" value="2">2. 명확성</label>
+<label id="q16o3"><input type="radio" name="q16" value="3">3. 추적 가능성</label>
+<label id="q16o4"><input type="radio" name="q16" value="4">4. 모호성</label>
+</div>
+<div class="q" id="qbox17" data-answer="4"><h3>17. 유스케이스 다이어그램의 구성요소로 적절하지 않은 것은?</h3>
+<label id="q17o1"><input type="radio" name="q17" value="1">1. Actor</label>
+<label id="q17o2"><input type="radio" name="q17" value="2">2. Use Case</label>
+<label id="q17o3"><input type="radio" name="q17" value="3">3. Association</label>
+<label id="q17o4"><input type="radio" name="q17" value="4">4. Trigger Table</label>
+</div>
+<div class="q" id="qbox18" data-answer="1"><h3>18. GoF 패턴 중 구조 패턴에 해당하는 것은?</h3>
+<label id="q18o1"><input type="radio" name="q18" value="1">1. Adapter</label>
+<label id="q18o2"><input type="radio" name="q18" value="2">2. Factory Method</label>
+<label id="q18o3"><input type="radio" name="q18" value="3">3. Observer</label>
+<label id="q18o4"><input type="radio" name="q18" value="4">4. Command</label>
+</div>
+<div class="q" id="qbox19" data-answer="1"><h3>19. 모듈화의 목적으로 가장 적절한 것은?</h3>
+<label id="q19o1"><input type="radio" name="q19" value="1">1. 복잡도 감소와 유지보수성 향상</label>
+<label id="q19o2"><input type="radio" name="q19" value="2">2. 중복 증가</label>
+<label id="q19o3"><input type="radio" name="q19" value="3">3. 결합도 증가</label>
+<label id="q19o4"><input type="radio" name="q19" value="4">4. 테스트 불가능성 확대</label>
+</div>
+<div class="q" id="qbox20" data-answer="4"><h3>20. 시스템 인터페이스 설계 시 고려사항으로 부적절한 것은?</h3>
+<label id="q20o1"><input type="radio" name="q20" value="1">1. 데이터 형식</label>
+<label id="q20o2"><input type="radio" name="q20" value="2">2. 송수신 주기</label>
+<label id="q20o3"><input type="radio" name="q20" value="3">3. 보안 요구사항</label>
+<label id="q20o4"><input type="radio" name="q20" value="4">4. 개발자 개인 취향만 반영</label>
+</div>
+<h2>2과목 소프트웨어 개발</h2>
+<div class="q" id="qbox21" data-answer="2"><h3>21. 소프트웨어 테스트에서 내부 구조를 기준으로 테스트하는 기법은?</h3>
+<label id="q21o1"><input type="radio" name="q21" value="1">1. 블랙박스 테스트</label>
+<label id="q21o2"><input type="radio" name="q21" value="2">2. 화이트박스 테스트</label>
+<label id="q21o3"><input type="radio" name="q21" value="3">3. 인수 테스트</label>
+<label id="q21o4"><input type="radio" name="q21" value="4">4. 베타 테스트</label>
+</div>
+<div class="q" id="qbox22" data-answer="1"><h3>22. 동치 분할 테스트에 대한 설명으로 옳은 것은?</h3>
+<label id="q22o1"><input type="radio" name="q22" value="1">1. 입력값을 유효/무효 그룹으로 나누어 대표값을 테스트한다</label>
+<label id="q22o2"><input type="radio" name="q22" value="2">2. 모든 경로를 실행한다</label>
+<label id="q22o3"><input type="radio" name="q22" value="3">3. 소스코드 문장을 모두 점검한다</label>
+<label id="q22o4"><input type="radio" name="q22" value="4">4. 프로그램 성능만 측정한다</label>
+</div>
+<div class="q" id="qbox23" data-answer="4"><h3>23. 형상관리 도구의 주요 기능이 아닌 것은?</h3>
+<label id="q23o1"><input type="radio" name="q23" value="1">1. 버전 관리</label>
+<label id="q23o2"><input type="radio" name="q23" value="2">2. 변경 관리</label>
+<label id="q23o3"><input type="radio" name="q23" value="3">3. 빌드 관리</label>
+<label id="q23o4"><input type="radio" name="q23" value="4">4. 전압 관리</label>
+</div>
+<div class="q" id="qbox24" data-answer="2"><h3>24. 자료구조 중 LIFO 구조는?</h3>
+<label id="q24o1"><input type="radio" name="q24" value="1">1. Queue</label>
+<label id="q24o2"><input type="radio" name="q24" value="2">2. Stack</label>
+<label id="q24o3"><input type="radio" name="q24" value="3">3. Tree</label>
+<label id="q24o4"><input type="radio" name="q24" value="4">4. Graph</label>
+</div>
+<div class="q" id="qbox25" data-answer="2"><h3>25. 큐 Queue의 특징은?</h3>
+<label id="q25o1"><input type="radio" name="q25" value="1">1. LIFO</label>
+<label id="q25o2"><input type="radio" name="q25" value="2">2. FIFO</label>
+<label id="q25o3"><input type="radio" name="q25" value="3">3. 임의 삭제만 가능</label>
+<label id="q25o4"><input type="radio" name="q25" value="4">4. 계층 구조</label>
+</div>
+<div class="q" id="qbox26" data-answer="3"><h3>26. 정렬 알고리즘 중 평균 시간복잡도가 O(n log n)인 것은?</h3>
+<label id="q26o1"><input type="radio" name="q26" value="1">1. 삽입 정렬</label>
+<label id="q26o2"><input type="radio" name="q26" value="2">2. 버블 정렬</label>
+<label id="q26o3"><input type="radio" name="q26" value="3">3. 퀵 정렬</label>
+<label id="q26o4"><input type="radio" name="q26" value="4">4. 선택 정렬</label>
+</div>
+<div class="q" id="qbox27" data-answer="1"><h3>27. 해싱의 특징으로 가장 적절한 것은?</h3>
+<label id="q27o1"><input type="radio" name="q27" value="1">1. 빠른 검색을 위해 해시 함수를 사용한다</label>
+<label id="q27o2"><input type="radio" name="q27" value="2">2. 항상 정렬 상태를 유지한다</label>
+<label id="q27o3"><input type="radio" name="q27" value="3">3. 트리 순회만 지원한다</label>
+<label id="q27o4"><input type="radio" name="q27" value="4">4. 중복 키를 반드시 허용한다</label>
+</div>
+<div class="q" id="qbox28" data-answer="1"><h3>28. 소프트웨어 품질 특성 중 유지보수성과 관련이 깊은 것은?</h3>
+<label id="q28o1"><input type="radio" name="q28" value="1">1. 변경 용이성</label>
+<label id="q28o2"><input type="radio" name="q28" value="2">2. 처리량</label>
+<label id="q28o3"><input type="radio" name="q28" value="3">3. 전송 거리</label>
+<label id="q28o4"><input type="radio" name="q28" value="4">4. 전력 소모</label>
+</div>
+<div class="q" id="qbox29" data-answer="4"><h3>29. 빌드 자동화 도구로 볼 수 없는 것은?</h3>
+<label id="q29o1"><input type="radio" name="q29" value="1">1. Jenkins</label>
+<label id="q29o2"><input type="radio" name="q29" value="2">2. Gradle</label>
+<label id="q29o3"><input type="radio" name="q29" value="3">3. Maven</label>
+<label id="q29o4"><input type="radio" name="q29" value="4">4. Photoshop</label>
+</div>
+<div class="q" id="qbox30" data-answer="1"><h3>30. 단위 테스트에서 테스트 드라이버가 필요한 경우는?</h3>
+<label id="q30o1"><input type="radio" name="q30" value="1">1. 상위 모듈 없이 하위 모듈을 테스트할 때</label>
+<label id="q30o2"><input type="radio" name="q30" value="2">2. 완성된 시스템을 운영할 때</label>
+<label id="q30o3"><input type="radio" name="q30" value="3">3. 사용자 교육을 할 때</label>
+<label id="q30o4"><input type="radio" name="q30" value="4">4. 네트워크 장비를 교체할 때</label>
+</div>
+<div class="q" id="qbox31" data-answer="4"><h3>31. 테스트 오라클의 유형이 아닌 것은?</h3>
+<label id="q31o1"><input type="radio" name="q31" value="1">1. 참 오라클</label>
+<label id="q31o2"><input type="radio" name="q31" value="2">2. 샘플링 오라클</label>
+<label id="q31o3"><input type="radio" name="q31" value="3">3. 휴리스틱 오라클</label>
+<label id="q31o4"><input type="radio" name="q31" value="4">4. 물리 오라클</label>
+</div>
+<div class="q" id="qbox32" data-answer="1"><h3>32. 알파 테스트에 대한 설명으로 옳은 것은?</h3>
+<label id="q32o1"><input type="radio" name="q32" value="1">1. 개발자 환경에서 사용자가 테스트한다</label>
+<label id="q32o2"><input type="radio" name="q32" value="2">2. 실제 운영환경에서 불특정 다수가 테스트한다</label>
+<label id="q32o3"><input type="radio" name="q32" value="3">3. 코드 컴파일만 수행한다</label>
+<label id="q32o4"><input type="radio" name="q32" value="4">4. 데이터베이스 정규화 과정이다</label>
+</div>
+<div class="q" id="qbox33" data-answer="4"><h3>33. 인터페이스 구현 검증 도구가 아닌 것은?</h3>
+<label id="q33o1"><input type="radio" name="q33" value="1">1. xUnit</label>
+<label id="q33o2"><input type="radio" name="q33" value="2">2. STAF</label>
+<label id="q33o3"><input type="radio" name="q33" value="3">3. FitNesse</label>
+<label id="q33o4"><input type="radio" name="q33" value="4">4. ERD</label>
+</div>
+<div class="q" id="qbox34" data-answer="3"><h3>34. 소프트웨어 패키징 시 고려사항으로 적절하지 않은 것은?</h3>
+<label id="q34o1"><input type="radio" name="q34" value="1">1. 사용자 중심으로 매뉴얼 작성</label>
+<label id="q34o2"><input type="radio" name="q34" value="2">2. 버전 정보 관리</label>
+<label id="q34o3"><input type="radio" name="q34" value="3">3. 무조건 개발자 전용 용어 사용</label>
+<label id="q34o4"><input type="radio" name="q34" value="4">4. 설치 및 제거 절차 제공</label>
+</div>
+<div class="q" id="qbox35" data-answer="3"><h3>35. DRM 구성 요소 중 콘텐츠를 이용할 수 있는 권리 정보는?</h3>
+<label id="q35o1"><input type="radio" name="q35" value="1">1. 패키저</label>
+<label id="q35o2"><input type="radio" name="q35" value="2">2. 클리어링 하우스</label>
+<label id="q35o3"><input type="radio" name="q35" value="3">3. 라이선스</label>
+<label id="q35o4"><input type="radio" name="q35" value="4">4. 보안 컨테이너</label>
+</div>
+<div class="q" id="qbox36" data-answer="1"><h3>36. 소스코드 품질 분석 도구 중 정적 분석 도구의 예는?</h3>
+<label id="q36o1"><input type="radio" name="q36" value="1">1. pmd</label>
+<label id="q36o2"><input type="radio" name="q36" value="2">2. JMeter</label>
+<label id="q36o3"><input type="radio" name="q36" value="3">3. LoadRunner</label>
+<label id="q36o4"><input type="radio" name="q36" value="4">4. Wireshark</label>
+</div>
+<div class="q" id="qbox37" data-answer="2"><h3>37. EAI 구축 유형 중 허브를 중심으로 시스템을 연결하는 방식은?</h3>
+<label id="q37o1"><input type="radio" name="q37" value="1">1. Point-to-Point</label>
+<label id="q37o2"><input type="radio" name="q37" value="2">2. Hub &amp; Spoke</label>
+<label id="q37o3"><input type="radio" name="q37" value="3">3. Message Bus</label>
+<label id="q37o4"><input type="radio" name="q37" value="4">4. Hybrid</label>
+</div>
+<div class="q" id="qbox38" data-answer="1"><h3>38. 반정규화의 목적으로 적절한 것은?</h3>
+<label id="q38o1"><input type="radio" name="q38" value="1">1. 조회 성능 향상</label>
+<label id="q38o2"><input type="radio" name="q38" value="2">2. 무결성 제약 완전 제거</label>
+<label id="q38o3"><input type="radio" name="q38" value="3">3. 모든 테이블 삭제</label>
+<label id="q38o4"><input type="radio" name="q38" value="4">4. 데이터 의미 제거</label>
+</div>
+<div class="q" id="qbox39" data-answer="1"><h3>39. 소프트웨어 설치 매뉴얼에 포함될 내용으로 적절한 것은?</h3>
+<label id="q39o1"><input type="radio" name="q39" value="1">1. 설치 환경</label>
+<label id="q39o2"><input type="radio" name="q39" value="2">2. 삭제 금지 욕설</label>
+<label id="q39o3"><input type="radio" name="q39" value="3">3. 개인 메모만</label>
+<label id="q39o4"><input type="radio" name="q39" value="4">4. 무관한 광고</label>
+</div>
+<div class="q" id="qbox40" data-answer="1"><h3>40. 회귀 테스트의 목적은?</h3>
+<label id="q40o1"><input type="radio" name="q40" value="1">1. 변경 후 기존 기능 이상 여부 확인</label>
+<label id="q40o2"><input type="radio" name="q40" value="2">2. 신규 직원 채용</label>
+<label id="q40o3"><input type="radio" name="q40" value="3">3. 디스크 포맷</label>
+<label id="q40o4"><input type="radio" name="q40" value="4">4. IP 주소 할당</label>
+</div>
+<h2>3과목 데이터베이스 구축</h2>
+<div class="q" id="qbox41" data-answer="1"><h3>41. 관계형 데이터베이스에서 튜플은 무엇을 의미하는가?</h3>
+<label id="q41o1"><input type="radio" name="q41" value="1">1. 행</label>
+<label id="q41o2"><input type="radio" name="q41" value="2">2. 열</label>
+<label id="q41o3"><input type="radio" name="q41" value="3">3. 도메인</label>
+<label id="q41o4"><input type="radio" name="q41" value="4">4. 스키마</label>
+</div>
+<div class="q" id="qbox42" data-answer="1"><h3>42. 제1정규형의 조건은?</h3>
+<label id="q42o1"><input type="radio" name="q42" value="1">1. 속성값이 원자값이어야 한다</label>
+<label id="q42o2"><input type="radio" name="q42" value="2">2. 부분 함수 종속을 제거한다</label>
+<label id="q42o3"><input type="radio" name="q42" value="3">3. 이행 함수 종속을 제거한다</label>
+<label id="q42o4"><input type="radio" name="q42" value="4">4. 결정자가 후보키여야 한다</label>
+</div>
+<div class="q" id="qbox43" data-answer="1"><h3>43. 제2정규형은 1NF를 만족하고 무엇을 제거해야 하는가?</h3>
+<label id="q43o1"><input type="radio" name="q43" value="1">1. 부분 함수 종속</label>
+<label id="q43o2"><input type="radio" name="q43" value="2">2. 이행 함수 종속</label>
+<label id="q43o3"><input type="radio" name="q43" value="3">3. 다치 종속</label>
+<label id="q43o4"><input type="radio" name="q43" value="4">4. 조인 종속</label>
+</div>
+<div class="q" id="qbox44" data-answer="1"><h3>44. 제3정규형은 2NF를 만족하고 무엇을 제거해야 하는가?</h3>
+<label id="q44o1"><input type="radio" name="q44" value="1">1. 이행 함수 종속</label>
+<label id="q44o2"><input type="radio" name="q44" value="2">2. 부분 함수 종속</label>
+<label id="q44o3"><input type="radio" name="q44" value="3">3. 원자값</label>
+<label id="q44o4"><input type="radio" name="q44" value="4">4. 기본키</label>
+</div>
+<div class="q" id="qbox45" data-answer="4"><h3>45. 트랜잭션의 ACID 특성이 아닌 것은?</h3>
+<label id="q45o1"><input type="radio" name="q45" value="1">1. Atomicity</label>
+<label id="q45o2"><input type="radio" name="q45" value="2">2. Consistency</label>
+<label id="q45o3"><input type="radio" name="q45" value="3">3. Isolation</label>
+<label id="q45o4"><input type="radio" name="q45" value="4">4. Dependency</label>
+</div>
+<div class="q" id="qbox46" data-answer="1"><h3>46. SQL 명령어 중 DDL에 해당하는 것은?</h3>
+<label id="q46o1"><input type="radio" name="q46" value="1">1. CREATE</label>
+<label id="q46o2"><input type="radio" name="q46" value="2">2. SELECT</label>
+<label id="q46o3"><input type="radio" name="q46" value="3">3. INSERT</label>
+<label id="q46o4"><input type="radio" name="q46" value="4">4. UPDATE</label>
+</div>
+<div class="q" id="qbox47" data-answer="3"><h3>47. SQL 명령어 중 DML에 해당하는 것은?</h3>
+<label id="q47o1"><input type="radio" name="q47" value="1">1. GRANT</label>
+<label id="q47o2"><input type="radio" name="q47" value="2">2. COMMIT</label>
+<label id="q47o3"><input type="radio" name="q47" value="3">3. SELECT</label>
+<label id="q47o4"><input type="radio" name="q47" value="4">4. CREATE</label>
+</div>
+<div class="q" id="qbox48" data-answer="1"><h3>48. SQL 명령어 중 DCL에 해당하는 것은?</h3>
+<label id="q48o1"><input type="radio" name="q48" value="1">1. GRANT</label>
+<label id="q48o2"><input type="radio" name="q48" value="2">2. INSERT</label>
+<label id="q48o3"><input type="radio" name="q48" value="3">3. DELETE</label>
+<label id="q48o4"><input type="radio" name="q48" value="4">4. ALTER</label>
+</div>
+<div class="q" id="qbox49" data-answer="1"><h3>49. 기본키의 특징으로 옳은 것은?</h3>
+<label id="q49o1"><input type="radio" name="q49" value="1">1. NULL 값을 가질 수 없다</label>
+<label id="q49o2"><input type="radio" name="q49" value="2">2. 중복이 가능하다</label>
+<label id="q49o3"><input type="radio" name="q49" value="3">3. 반드시 외래키여야 한다</label>
+<label id="q49o4"><input type="radio" name="q49" value="4">4. 한 테이블에 무한히 지정한다</label>
+</div>
+<div class="q" id="qbox50" data-answer="1"><h3>50. 외래키의 목적은?</h3>
+<label id="q50o1"><input type="radio" name="q50" value="1">1. 참조 무결성 유지</label>
+<label id="q50o2"><input type="radio" name="q50" value="2">2. 중복 데이터 강제</label>
+<label id="q50o3"><input type="radio" name="q50" value="3">3. 인덱스 제거</label>
+<label id="q50o4"><input type="radio" name="q50" value="4">4. 트랜잭션 삭제</label>
+</div>
+<div class="q" id="qbox51" data-answer="1"><h3>51. 뷰 View에 대한 설명으로 옳은 것은?</h3>
+<label id="q51o1"><input type="radio" name="q51" value="1">1. 하나 이상의 테이블에서 유도된 가상 테이블</label>
+<label id="q51o2"><input type="radio" name="q51" value="2">2. 물리적으로만 저장되는 원본 테이블</label>
+<label id="q51o3"><input type="radio" name="q51" value="3">3. 운영체제 프로세스</label>
+<label id="q51o4"><input type="radio" name="q51" value="4">4. 네트워크 주소</label>
+</div>
+<div class="q" id="qbox52" data-answer="1"><h3>52. 인덱스의 장점은?</h3>
+<label id="q52o1"><input type="radio" name="q52" value="1">1. 검색 속도 향상</label>
+<label id="q52o2"><input type="radio" name="q52" value="2">2. 항상 저장공간 감소</label>
+<label id="q52o3"><input type="radio" name="q52" value="3">3. 삽입 속도 무조건 향상</label>
+<label id="q52o4"><input type="radio" name="q52" value="4">4. 무결성 제거</label>
+</div>
+<div class="q" id="qbox53" data-answer="4"><h3>53. 데이터베이스 이상 현상이 아닌 것은?</h3>
+<label id="q53o1"><input type="radio" name="q53" value="1">1. 삽입 이상</label>
+<label id="q53o2"><input type="radio" name="q53" value="2">2. 삭제 이상</label>
+<label id="q53o3"><input type="radio" name="q53" value="3">3. 갱신 이상</label>
+<label id="q53o4"><input type="radio" name="q53" value="4">4. 컴파일 이상</label>
+</div>
+<div class="q" id="qbox54" data-answer="1"><h3>54. 병행제어의 목적으로 옳은 것은?</h3>
+<label id="q54o1"><input type="radio" name="q54" value="1">1. 동시 트랜잭션의 일관성 보장</label>
+<label id="q54o2"><input type="radio" name="q54" value="2">2. 디스크 용량 증가</label>
+<label id="q54o3"><input type="radio" name="q54" value="3">3. CPU 제거</label>
+<label id="q54o4"><input type="radio" name="q54" value="4">4. 테이블명 자동 번역</label>
+</div>
+<div class="q" id="qbox55" data-answer="1"><h3>55. 로킹 기법에서 공유 잠금은 주로 어떤 연산에 사용되는가?</h3>
+<label id="q55o1"><input type="radio" name="q55" value="1">1. 읽기</label>
+<label id="q55o2"><input type="radio" name="q55" value="2">2. 쓰기</label>
+<label id="q55o3"><input type="radio" name="q55" value="3">3. 삭제 전용</label>
+<label id="q55o4"><input type="radio" name="q55" value="4">4. 커밋 금지</label>
+</div>
+<div class="q" id="qbox56" data-answer="1"><h3>56. 데이터베이스 회복 기법에서 로그를 이용해 장애 이전 상태로 되돌리는 작업은?</h3>
+<label id="q56o1"><input type="radio" name="q56" value="1">1. UNDO</label>
+<label id="q56o2"><input type="radio" name="q56" value="2">2. JOIN</label>
+<label id="q56o3"><input type="radio" name="q56" value="3">3. PROJECT</label>
+<label id="q56o4"><input type="radio" name="q56" value="4">4. SELECT</label>
+</div>
+<div class="q" id="qbox57" data-answer="1"><h3>57. 관계대수 연산 중 조건을 만족하는 행을 추출하는 것은?</h3>
+<label id="q57o1"><input type="radio" name="q57" value="1">1. SELECT</label>
+<label id="q57o2"><input type="radio" name="q57" value="2">2. PROJECT</label>
+<label id="q57o3"><input type="radio" name="q57" value="3">3. JOIN</label>
+<label id="q57o4"><input type="radio" name="q57" value="4">4. DIVISION</label>
+</div>
+<div class="q" id="qbox58" data-answer="1"><h3>58. 관계대수 연산 중 특정 속성 열을 추출하는 것은?</h3>
+<label id="q58o1"><input type="radio" name="q58" value="1">1. PROJECT</label>
+<label id="q58o2"><input type="radio" name="q58" value="2">2. SELECT</label>
+<label id="q58o3"><input type="radio" name="q58" value="3">3. UNION</label>
+<label id="q58o4"><input type="radio" name="q58" value="4">4. DIFFERENCE</label>
+</div>
+<div class="q" id="qbox59" data-answer="1"><h3>59. ERD에서 개체 간 관계를 표현하는 것은?</h3>
+<label id="q59o1"><input type="radio" name="q59" value="1">1. 마름모</label>
+<label id="q59o2"><input type="radio" name="q59" value="2">2. 사각형</label>
+<label id="q59o3"><input type="radio" name="q59" value="3">3. 타원</label>
+<label id="q59o4"><input type="radio" name="q59" value="4">4. 이중선만</label>
+</div>
+<div class="q" id="qbox60" data-answer="1"><h3>60. 분산 데이터베이스의 장점으로 적절한 것은?</h3>
+<label id="q60o1"><input type="radio" name="q60" value="1">1. 지역 자치성 향상</label>
+<label id="q60o2"><input type="radio" name="q60" value="2">2. 통신비 항상 0</label>
+<label id="q60o3"><input type="radio" name="q60" value="3">3. 장애 가능성 완전 제거</label>
+<label id="q60o4"><input type="radio" name="q60" value="4">4. 보안 고려 불필요</label>
+</div>
+<h2>4과목 프로그래밍 언어 활용</h2>
+<div class="q" id="qbox61" data-answer="1"><h3>61. C언어에서 배열 인덱스는 보통 몇부터 시작하는가?</h3>
+<label id="q61o1"><input type="radio" name="q61" value="1">1. 0</label>
+<label id="q61o2"><input type="radio" name="q61" value="2">2. 1</label>
+<label id="q61o3"><input type="radio" name="q61" value="3">3. -1</label>
+<label id="q61o4"><input type="radio" name="q61" value="4">4. 10</label>
+</div>
+<div class="q" id="qbox62" data-answer="1"><h3>62. C언어에서 포인터 변수는 무엇을 저장하는가?</h3>
+<label id="q62o1"><input type="radio" name="q62" value="1">1. 주소값</label>
+<label id="q62o2"><input type="radio" name="q62" value="2">2. 문자열 길이만</label>
+<label id="q62o3"><input type="radio" name="q62" value="3">3. 소스코드</label>
+<label id="q62o4"><input type="radio" name="q62" value="4">4. 컴파일러</label>
+</div>
+<div class="q" id="qbox63" data-answer="1"><h3>63. Java에서 클래스 상속에 사용하는 키워드는?</h3>
+<label id="q63o1"><input type="radio" name="q63" value="1">1. extends</label>
+<label id="q63o2"><input type="radio" name="q63" value="2">2. implements</label>
+<label id="q63o3"><input type="radio" name="q63" value="3">3. include</label>
+<label id="q63o4"><input type="radio" name="q63" value="4">4. using</label>
+</div>
+<div class="q" id="qbox64" data-answer="1"><h3>64. Python에서 리스트의 마지막 요소를 가리키는 인덱스는?</h3>
+<label id="q64o1"><input type="radio" name="q64" value="1">1. -1</label>
+<label id="q64o2"><input type="radio" name="q64" value="2">2. 0</label>
+<label id="q64o3"><input type="radio" name="q64" value="3">3. 1</label>
+<label id="q64o4"><input type="radio" name="q64" value="4">4. last</label>
+</div>
+<div class="q" id="qbox65" data-answer="4"><h3>65. 운영체제의 목적이 아닌 것은?</h3>
+<label id="q65o1"><input type="radio" name="q65" value="1">1. 자원 관리</label>
+<label id="q65o2"><input type="radio" name="q65" value="2">2. 사용자 편의 제공</label>
+<label id="q65o3"><input type="radio" name="q65" value="3">3. 처리 능력 향상</label>
+<label id="q65o4"><input type="radio" name="q65" value="4">4. 소스코드 표절</label>
+</div>
+<div class="q" id="qbox66" data-answer="1"><h3>66. 프로세스 상태 전이 중 실행 상태에서 입출력 요청 시 이동하는 상태는?</h3>
+<label id="q66o1"><input type="radio" name="q66" value="1">1. 대기 상태</label>
+<label id="q66o2"><input type="radio" name="q66" value="2">2. 준비 상태</label>
+<label id="q66o3"><input type="radio" name="q66" value="3">3. 종료 상태</label>
+<label id="q66o4"><input type="radio" name="q66" value="4">4. 생성 상태</label>
+</div>
+<div class="q" id="qbox67" data-answer="1"><h3>67. 스케줄링 기법 중 비선점 방식은?</h3>
+<label id="q67o1"><input type="radio" name="q67" value="1">1. FCFS</label>
+<label id="q67o2"><input type="radio" name="q67" value="2">2. Round Robin</label>
+<label id="q67o3"><input type="radio" name="q67" value="3">3. SRT</label>
+<label id="q67o4"><input type="radio" name="q67" value="4">4. MLQ 선점형</label>
+</div>
+<div class="q" id="qbox68" data-answer="1"><h3>68. HRN 스케줄링의 우선순위 계산식은?</h3>
+<label id="q68o1"><input type="radio" name="q68" value="1">1. (대기시간+서비스시간)/서비스시간</label>
+<label id="q68o2"><input type="radio" name="q68" value="2">2. 서비스시간/대기시간</label>
+<label id="q68o3"><input type="radio" name="q68" value="3">3. 대기시간-서비스시간</label>
+<label id="q68o4"><input type="radio" name="q68" value="4">4. 서비스시간*대기시간</label>
+</div>
+<div class="q" id="qbox69" data-answer="4"><h3>69. 교착상태 발생 조건이 아닌 것은?</h3>
+<label id="q69o1"><input type="radio" name="q69" value="1">1. 상호배제</label>
+<label id="q69o2"><input type="radio" name="q69" value="2">2. 점유와 대기</label>
+<label id="q69o3"><input type="radio" name="q69" value="3">3. 비선점</label>
+<label id="q69o4"><input type="radio" name="q69" value="4">4. 선점 가능</label>
+</div>
+<div class="q" id="qbox70" data-answer="1"><h3>70. 가상기억장치에서 페이지 부재가 발생하면?</h3>
+<label id="q70o1"><input type="radio" name="q70" value="1">1. 필요한 페이지를 보조기억장치에서 적재한다</label>
+<label id="q70o2"><input type="radio" name="q70" value="2">2. CPU가 영구 정지한다</label>
+<label id="q70o3"><input type="radio" name="q70" value="3">3. 모든 파일이 삭제된다</label>
+<label id="q70o4"><input type="radio" name="q70" value="4">4. 프로세스가 항상 종료된다</label>
+</div>
+<div class="q" id="qbox71" data-answer="1"><h3>71. 페이지 교체 알고리즘 중 가장 오랫동안 사용되지 않은 페이지를 교체하는 것은?</h3>
+<label id="q71o1"><input type="radio" name="q71" value="1">1. LRU</label>
+<label id="q71o2"><input type="radio" name="q71" value="2">2. FIFO</label>
+<label id="q71o3"><input type="radio" name="q71" value="3">3. OPT</label>
+<label id="q71o4"><input type="radio" name="q71" value="4">4. LFU</label>
+</div>
+<div class="q" id="qbox72" data-answer="1"><h3>72. OSI 7계층 중 종단 간 신뢰성 있는 전송을 담당하는 계층은?</h3>
+<label id="q72o1"><input type="radio" name="q72" value="1">1. 전송 계층</label>
+<label id="q72o2"><input type="radio" name="q72" value="2">2. 네트워크 계층</label>
+<label id="q72o3"><input type="radio" name="q72" value="3">3. 물리 계층</label>
+<label id="q72o4"><input type="radio" name="q72" value="4">4. 표현 계층</label>
+</div>
+<div class="q" id="qbox73" data-answer="1"><h3>73. TCP와 UDP에 대한 설명으로 옳은 것은?</h3>
+<label id="q73o1"><input type="radio" name="q73" value="1">1. TCP는 연결형, UDP는 비연결형이다</label>
+<label id="q73o2"><input type="radio" name="q73" value="2">2. TCP는 비연결형, UDP는 연결형이다</label>
+<label id="q73o3"><input type="radio" name="q73" value="3">3. 둘 다 항상 연결형이다</label>
+<label id="q73o4"><input type="radio" name="q73" value="4">4. 둘 다 전송계층이 아니다</label>
+</div>
+<div class="q" id="qbox74" data-answer="1"><h3>74. IPv4 클래스 C의 기본 서브넷 마스크는?</h3>
+<label id="q74o1"><input type="radio" name="q74" value="1">1. 255.255.255.0</label>
+<label id="q74o2"><input type="radio" name="q74" value="2">2. 255.0.0.0</label>
+<label id="q74o3"><input type="radio" name="q74" value="3">3. 255.255.0.0</label>
+<label id="q74o4"><input type="radio" name="q74" value="4">4. 255.255.255.255</label>
+</div>
+<div class="q" id="qbox75" data-answer="1"><h3>75. DNS의 역할은?</h3>
+<label id="q75o1"><input type="radio" name="q75" value="1">1. 도메인 이름을 IP 주소로 변환</label>
+<label id="q75o2"><input type="radio" name="q75" value="2">2. 파일 압축</label>
+<label id="q75o3"><input type="radio" name="q75" value="3">3. CPU 스케줄링</label>
+<label id="q75o4"><input type="radio" name="q75" value="4">4. 메모리 페이징</label>
+</div>
+<div class="q" id="qbox76" data-answer="1"><h3>76. HTTP 기본 포트 번호는?</h3>
+<label id="q76o1"><input type="radio" name="q76" value="1">1. 80</label>
+<label id="q76o2"><input type="radio" name="q76" value="2">2. 21</label>
+<label id="q76o3"><input type="radio" name="q76" value="3">3. 25</label>
+<label id="q76o4"><input type="radio" name="q76" value="4">4. 110</label>
+</div>
+<div class="q" id="qbox77" data-answer="1"><h3>77. FTP의 제어 연결 기본 포트는?</h3>
+<label id="q77o1"><input type="radio" name="q77" value="1">1. 21</label>
+<label id="q77o2"><input type="radio" name="q77" value="2">2. 20</label>
+<label id="q77o3"><input type="radio" name="q77" value="3">3. 80</label>
+<label id="q77o4"><input type="radio" name="q77" value="4">4. 443</label>
+</div>
+<div class="q" id="qbox78" data-answer="1"><h3>78. 쉘 스크립트에서 조건문에 자주 사용하는 키워드는?</h3>
+<label id="q78o1"><input type="radio" name="q78" value="1">1. if</label>
+<label id="q78o2"><input type="radio" name="q78" value="2">2. class</label>
+<label id="q78o3"><input type="radio" name="q78" value="3">3. public</label>
+<label id="q78o4"><input type="radio" name="q78" value="4">4. select</label>
+</div>
+<div class="q" id="qbox79" data-answer="1"><h3>79. 리눅스에서 현재 디렉터리 파일 목록 확인 명령어는?</h3>
+<label id="q79o1"><input type="radio" name="q79" value="1">1. ls</label>
+<label id="q79o2"><input type="radio" name="q79" value="2">2. cd</label>
+<label id="q79o3"><input type="radio" name="q79" value="3">3. pwd</label>
+<label id="q79o4"><input type="radio" name="q79" value="4">4. rm</label>
+</div>
+<div class="q" id="qbox80" data-answer="1"><h3>80. IP 주소 부족 문제 해결을 위해 사용되는 기술은?</h3>
+<label id="q80o1"><input type="radio" name="q80" value="1">1. NAT</label>
+<label id="q80o2"><input type="radio" name="q80" value="2">2. RAID</label>
+<label id="q80o3"><input type="radio" name="q80" value="3">3. DMA</label>
+<label id="q80o4"><input type="radio" name="q80" value="4">4. PCB</label>
+</div>
+<h2>5과목 정보시스템 구축관리</h2>
+<div class="q" id="qbox81" data-answer="1"><h3>81. 소프트웨어 개발 보안의 3대 요소로 적절한 것은?</h3>
+<label id="q81o1"><input type="radio" name="q81" value="1">1. 기밀성, 무결성, 가용성</label>
+<label id="q81o2"><input type="radio" name="q81" value="2">2. 속도, 색상, 가격</label>
+<label id="q81o3"><input type="radio" name="q81" value="3">3. 압축, 삭제, 복사</label>
+<label id="q81o4"><input type="radio" name="q81" value="4">4. 입력, 출력, 주석</label>
+</div>
+<div class="q" id="qbox82" data-answer="1"><h3>82. SQL Injection 공격의 설명으로 옳은 것은?</h3>
+<label id="q82o1"><input type="radio" name="q82" value="1">1. 입력값에 SQL 구문을 삽입해 비정상 질의를 수행한다</label>
+<label id="q82o2"><input type="radio" name="q82" value="2">2. 네트워크 케이블을 절단한다</label>
+<label id="q82o3"><input type="radio" name="q82" value="3">3. CPU 온도를 올린다</label>
+<label id="q82o4"><input type="radio" name="q82" value="4">4. 메모리만 물리적으로 제거한다</label>
+</div>
+<div class="q" id="qbox83" data-answer="1"><h3>83. XSS 공격은 주로 무엇을 삽입하는 공격인가?</h3>
+<label id="q83o1"><input type="radio" name="q83" value="1">1. 악성 스크립트</label>
+<label id="q83o2"><input type="radio" name="q83" value="2">2. 디스크 파티션</label>
+<label id="q83o3"><input type="radio" name="q83" value="3">3. 전원 케이블</label>
+<label id="q83o4"><input type="radio" name="q83" value="4">4. 라우터 펌웨어</label>
+</div>
+<div class="q" id="qbox84" data-answer="1"><h3>84. DoS 공격의 목적은?</h3>
+<label id="q84o1"><input type="radio" name="q84" value="1">1. 서비스 가용성 저하</label>
+<label id="q84o2"><input type="radio" name="q84" value="2">2. 데이터 정규화</label>
+<label id="q84o3"><input type="radio" name="q84" value="3">3. 코드 재사용</label>
+<label id="q84o4"><input type="radio" name="q84" value="4">4. 컴파일 최적화</label>
+</div>
+<div class="q" id="qbox85" data-answer="1"><h3>85. 암호화 방식 중 공개키와 개인키를 사용하는 것은?</h3>
+<label id="q85o1"><input type="radio" name="q85" value="1">1. 비대칭키 암호화</label>
+<label id="q85o2"><input type="radio" name="q85" value="2">2. 대칭키 암호화</label>
+<label id="q85o3"><input type="radio" name="q85" value="3">3. 해시만</label>
+<label id="q85o4"><input type="radio" name="q85" value="4">4. 압축 알고리즘</label>
+</div>
+<div class="q" id="qbox86" data-answer="1"><h3>86. 해시 함수의 특징으로 옳은 것은?</h3>
+<label id="q86o1"><input type="radio" name="q86" value="1">1. 일방향성</label>
+<label id="q86o2"><input type="radio" name="q86" value="2">2. 복호화 가능성</label>
+<label id="q86o3"><input type="radio" name="q86" value="3">3. 항상 동일 길이 원문 출력</label>
+<label id="q86o4"><input type="radio" name="q86" value="4">4. 키 교환 필수</label>
+</div>
+<div class="q" id="qbox87" data-answer="1"><h3>87. 개인정보 보호를 위해 데이터 일부를 가리는 기법은?</h3>
+<label id="q87o1"><input type="radio" name="q87" value="1">1. 마스킹</label>
+<label id="q87o2"><input type="radio" name="q87" value="2">2. 스케줄링</label>
+<label id="q87o3"><input type="radio" name="q87" value="3">3. 페이징</label>
+<label id="q87o4"><input type="radio" name="q87" value="4">4. 컴파일링</label>
+</div>
+<div class="q" id="qbox88" data-answer="1"><h3>88. 침입차단시스템을 의미하는 것은?</h3>
+<label id="q88o1"><input type="radio" name="q88" value="1">1. Firewall</label>
+<label id="q88o2"><input type="radio" name="q88" value="2">2. Compiler</label>
+<label id="q88o3"><input type="radio" name="q88" value="3">3. Loader</label>
+<label id="q88o4"><input type="radio" name="q88" value="4">4. Scheduler</label>
+</div>
+<div class="q" id="qbox89" data-answer="1"><h3>89. 침입탐지시스템을 의미하는 것은?</h3>
+<label id="q89o1"><input type="radio" name="q89" value="1">1. IDS</label>
+<label id="q89o2"><input type="radio" name="q89" value="2">2. IDE</label>
+<label id="q89o3"><input type="radio" name="q89" value="3">3. DDL</label>
+<label id="q89o4"><input type="radio" name="q89" value="4">4. DML</label>
+</div>
+<div class="q" id="qbox90" data-answer="1"><h3>90. RAID 1의 특징은?</h3>
+<label id="q90o1"><input type="radio" name="q90" value="1">1. 미러링</label>
+<label id="q90o2"><input type="radio" name="q90" value="2">2. 스트라이핑만</label>
+<label id="q90o3"><input type="radio" name="q90" value="3">3. 패리티 전용</label>
+<label id="q90o4"><input type="radio" name="q90" value="4">4. 압축</label>
+</div>
+<div class="q" id="qbox91" data-answer="1"><h3>91. 클라우드 서비스 모델 중 개발 플랫폼을 제공하는 것은?</h3>
+<label id="q91o1"><input type="radio" name="q91" value="1">1. PaaS</label>
+<label id="q91o2"><input type="radio" name="q91" value="2">2. IaaS</label>
+<label id="q91o3"><input type="radio" name="q91" value="3">3. SaaS</label>
+<label id="q91o4"><input type="radio" name="q91" value="4">4. DaaS</label>
+</div>
+<div class="q" id="qbox92" data-answer="1"><h3>92. DevOps의 핵심 취지로 적절한 것은?</h3>
+<label id="q92o1"><input type="radio" name="q92" value="1">1. 개발과 운영의 협업 및 자동화</label>
+<label id="q92o2"><input type="radio" name="q92" value="2">2. 개발과 운영의 완전 분리</label>
+<label id="q92o3"><input type="radio" name="q92" value="3">3. 문서 작성 금지</label>
+<label id="q92o4"><input type="radio" name="q92" value="4">4. 테스트 제거</label>
+</div>
+<div class="q" id="qbox93" data-answer="1"><h3>93. 형상관리에서 베이스라인은 무엇인가?</h3>
+<label id="q93o1"><input type="radio" name="q93" value="1">1. 공식적으로 승인된 기준 산출물</label>
+<label id="q93o2"><input type="radio" name="q93" value="2">2. 임시 메모</label>
+<label id="q93o3"><input type="radio" name="q93" value="3">3. 삭제 대상 파일</label>
+<label id="q93o4"><input type="radio" name="q93" value="4">4. 무작위 백업</label>
+</div>
+<div class="q" id="qbox94" data-answer="1"><h3>94. 보안 약점 중 버퍼 오버플로우는 무엇과 관련이 깊은가?</h3>
+<label id="q94o1"><input type="radio" name="q94" value="1">1. 할당된 메모리 범위를 초과한 데이터 기록</label>
+<label id="q94o2"><input type="radio" name="q94" value="2">2. 정규화</label>
+<label id="q94o3"><input type="radio" name="q94" value="3">3. UML 작성</label>
+<label id="q94o4"><input type="radio" name="q94" value="4">4. 라우팅 테이블 정리</label>
+</div>
+<div class="q" id="qbox95" data-answer="1"><h3>95. CMMI에서 프로세스가 정량적으로 관리되는 단계는?</h3>
+<label id="q95o1"><input type="radio" name="q95" value="1">1. 정량적 관리 단계</label>
+<label id="q95o2"><input type="radio" name="q95" value="2">2. 초기 단계</label>
+<label id="q95o3"><input type="radio" name="q95" value="3">3. 관리 단계</label>
+<label id="q95o4"><input type="radio" name="q95" value="4">4. 최적화 단계</label>
+</div>
+<div class="q" id="qbox96" data-answer="1"><h3>96. ITIL은 주로 무엇과 관련 있는가?</h3>
+<label id="q96o1"><input type="radio" name="q96" value="1">1. IT 서비스 관리</label>
+<label id="q96o2"><input type="radio" name="q96" value="2">2. 그래픽 디자인</label>
+<label id="q96o3"><input type="radio" name="q96" value="3">3. 전자회로 납땜</label>
+<label id="q96o4"><input type="radio" name="q96" value="4">4. 물류 포장</label>
+</div>
+<div class="q" id="qbox97" data-answer="1"><h3>97. 백업 방식 중 전체 데이터를 모두 백업하는 것은?</h3>
+<label id="q97o1"><input type="radio" name="q97" value="1">1. Full Backup</label>
+<label id="q97o2"><input type="radio" name="q97" value="2">2. Incremental Backup</label>
+<label id="q97o3"><input type="radio" name="q97" value="3">3. Differential Backup</label>
+<label id="q97o4"><input type="radio" name="q97" value="4">4. Mirrorless Backup</label>
+</div>
+<div class="q" id="qbox98" data-answer="1"><h3>98. 취약점 점검 도구가 아닌 것은?</h3>
+<label id="q98o1"><input type="radio" name="q98" value="1">1. Excel 색상표</label>
+<label id="q98o2"><input type="radio" name="q98" value="2">2. Nmap</label>
+<label id="q98o3"><input type="radio" name="q98" value="3">3. Nessus</label>
+<label id="q98o4"><input type="radio" name="q98" value="4">4. OpenVAS</label>
+</div>
+<div class="q" id="qbox99" data-answer="1"><h3>99. 공개키 기반 구조를 의미하는 것은?</h3>
+<label id="q99o1"><input type="radio" name="q99" value="1">1. PKI</label>
+<label id="q99o2"><input type="radio" name="q99" value="2">2. P2P</label>
+<label id="q99o3"><input type="radio" name="q99" value="3">3. PCB</label>
+<label id="q99o4"><input type="radio" name="q99" value="4">4. PDU</label>
+</div>
+<div class="q" id="qbox100" data-answer="1"><h3>100. 정보보호 관리체계 인증과 관련 있는 용어는?</h3>
+<label id="q100o1"><input type="radio" name="q100" value="1">1. ISMS</label>
+<label id="q100o2"><input type="radio" name="q100" value="2">2. HTML</label>
+<label id="q100o3"><input type="radio" name="q100" value="3">3. CSS</label>
+<label id="q100o4"><input type="radio" name="q100" value="4">4. SQL</label>
+</div>
+
+</form>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('gradeBtn').addEventListener('click', gradeExam);
+  document.getElementById('resetBtn').addEventListener('click', resetExam);
+});
+
+function gradeExam(){
+  var score=0, unanswered=0;
+  var subjectScores=[0,0,0,0,0];
+
+  for(var i=1;i<=100;i++){
+    var box=document.getElementById('qbox'+i);
+    var ans=Number(box.getAttribute('data-answer'));
+    var checked=document.querySelector('input[name="q'+i+'"]:checked');
+
+    for(var j=1;j<=4;j++){
+      var label=document.getElementById('q'+i+'o'+j);
+      label.classList.remove('correct');
+      label.classList.remove('wrong');
+    }
+
+    if(!checked){
+      unanswered++;
+      document.getElementById('q'+i+'o'+ans).classList.add('correct');
+      continue;
+    }
+
+    var val=Number(checked.value);
+    var sidx=Math.floor((i-1)/20);
+
+    if(val===ans){
+      score++;
+      subjectScores[sidx]++;
+      document.getElementById('q'+i+'o'+val).classList.add('correct');
+    }else{
+      document.getElementById('q'+i+'o'+val).classList.add('wrong');
+      document.getElementById('q'+i+'o'+ans).classList.add('correct');
+    }
+  }
+
+  var failSubject=false;
+  for(var k=0;k<5;k++){ if(subjectScores[k]<8) failSubject=true; }
+  var pass=(score>=60 && !failSubject);
+
+  var out='<b>총점: '+score+' / 100점</b><br>';
+  out+='미응답: '+unanswered+'문제<br>';
+  out+='합격 여부: '+(pass?'합격권':'불합격/과락 위험')+'<br><br>';
+  for(var m=0;m<5;m++){
+    out+=(m+1)+'과목: '+subjectScores[m]+'/20문제';
+    if(subjectScores[m]<8) out+=' ⚠ 과락';
+    out+='<br>';
+  }
+
+  var result=document.getElementById('result');
+  result.innerHTML=out;
+  result.style.display='block';
+  window.scrollTo(0,0);
+}
+
+function resetExam(){
+  document.getElementById('exam').reset();
+  var labels=document.getElementsByTagName('label');
+  for(var i=0;i<labels.length;i++){
+    labels[i].classList.remove('correct');
+    labels[i].classList.remove('wrong');
+  }
+  document.getElementById('result').style.display='none';
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
