@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정보처리기사 CBT 랜덤 모의고사</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin:0;background:#f3f4f6;color:#111827}
+header{background:white;padding:14px;border-bottom:1px solid #ddd;position:sticky;top:0;z-index:10}
+h1{font-size:20px;margin:0 0 8px}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+button{border:0;border-radius:10px;padding:11px 14px;font-size:15px;font-weight:700}
+.primary{background:#2563eb;color:white}.gray{background:#6b7280;color:white}.green{background:#16a34a;color:white}
+main{padding:14px;max-width:900px;margin:auto}
+.q{background:white;border-radius:12px;padding:14px;margin:12px 0;border:1px solid #e5e7eb}
+.q h3{font-size:16px;margin:0 0 10px;line-height:1.45}
+label{display:block;padding:10px;margin:7px 0;border:1px solid #d1d5db;border-radius:8px;background:#fafafa}
+input{transform:scale(1.2);margin-right:8px}
+.correct{border:2px solid #16a34a!important;background:#ecfdf5!important}
+.wrong{border:2px solid #dc2626!important;background:#fef2f2!important}
+#result{background:#111827;color:white;border-radius:12px;padding:15px;margin:14px 0;font-size:16px;line-height:1.6;display:none}
+.badge{display:inline-block;background:#e5e7eb;border-radius:999px;padding:3px 8px;font-size:12px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>정보처리기사 필기 CBT 랜덤 모의고사</h1>
+<div class="btns">
+<button class="green" id="newBtn" type="button">새 문제 섞기</button>
+<button class="primary" id="gradeBtn" type="button">채점하기</button>
+<button class="gray" id="resetBtn" type="button">초기화</button>
+</div>
+</header>
+<main>
+<div id="result"></div>
+<div id="exam"></div>
+</main>
+
+<script>
+const BANK = [{"s": "소프트웨어 설계", "q": "요구사항 개발 프로세스의 순서로 가장 적절한 것은?", "o": ["도출-분석-명세-확인", "분석-도출-확인-명세", "명세-도출-분석-확인", "확인-명세-분석-도출"], "a": 1}, {"s": "소프트웨어 설계", "q": "UML 다이어그램 중 시스템의 동적 행위를 표현하는 것은?", "o": ["클래스 다이어그램", "객체 다이어그램", "시퀀스 다이어그램", "컴포넌트 다이어그램"], "a": 3}, {"s": "소프트웨어 설계", "q": "객체지향의 캡슐화에 대한 설명으로 옳은 것은?", "o": ["상위 클래스의 속성을 물려받는 것", "데이터와 연산을 하나로 묶고 접근을 제한하는 것", "동일 이름의 메서드가 여러 형태로 동작하는 것", "객체 간 메시지 전달을 금지하는 것"], "a": 2}, {"s": "소프트웨어 설계", "q": "디자인 패턴 중 객체 생성을 서브클래스에 위임하는 패턴은?", "o": ["Factory Method", "Observer", "Decorator", "Strategy"], "a": 1}, {"s": "소프트웨어 설계", "q": "MVC 패턴에서 View의 역할은?", "o": ["데이터 저장", "사용자 인터페이스 제공", "비즈니스 로직 수행", "DB 연결만 수행"], "a": 2}, {"s": "소프트웨어 설계", "q": "자료 흐름도 DFD의 구성 요소가 아닌 것은?", "o": ["Process", "Data Store", "Data Flow", "Class"], "a": 4}, {"s": "소프트웨어 설계", "q": "애자일 개발 방법론의 특징으로 옳은 것은?", "o": ["변경을 엄격히 금지한다", "고객과 지속적으로 협업한다", "대규모 문서만 중시한다", "최종 단계에서만 테스트한다"], "a": 2}, {"s": "소프트웨어 설계", "q": "HIPO의 구성 요소가 아닌 것은?", "o": ["가시적 도표", "총체적 도표", "세부적 도표", "상태 전이도"], "a": 4}, {"s": "소프트웨어 설계", "q": "객체지향 설계 원칙 SOLID에 해당하지 않는 것은?", "o": ["단일 책임 원칙", "개방 폐쇄 원칙", "리스코프 치환 원칙", "데이터 중복 원칙"], "a": 4}, {"s": "소프트웨어 설계", "q": "결합도 중 가장 결합도가 낮은 것은?", "o": ["자료 결합도", "공통 결합도", "내용 결합도", "제어 결합도"], "a": 1}, {"s": "소프트웨어 설계", "q": "응집도 중 가장 바람직한 것은?", "o": ["우연적 응집도", "논리적 응집도", "기능적 응집도", "시간적 응집도"], "a": 3}, {"s": "소프트웨어 설계", "q": "객체 상태 변경 시 의존 객체에 통지하는 패턴은?", "o": ["Observer", "Singleton", "Builder", "Adapter"], "a": 1}, {"s": "소프트웨어 설계", "q": "위험 분석을 강조하는 생명주기 모형은?", "o": ["폭포수 모형", "나선형 모형", "V 모형", "프로토타입 모형"], "a": 2}, {"s": "소프트웨어 설계", "q": "요구사항 명세서의 특성으로 부적절한 것은?", "o": ["완전성", "명확성", "추적 가능성", "모호성"], "a": 4}, {"s": "소프트웨어 설계", "q": "GoF 패턴 중 구조 패턴에 해당하는 것은?", "o": ["Adapter", "Factory Method", "Observer", "Command"], "a": 1}, {"s": "소프트웨어 설계", "q": "럼바우 객체지향 분석 기법의 구성 요소가 아닌 것은?", "o": ["객체 모델링", "동적 모델링", "기능 모델링", "관계 모델링"], "a": 4}, {"s": "소프트웨어 설계", "q": "자료 사전(Data Dictionary)에 기록되는 내용은?", "o": ["데이터 정의 정보", "소스코드 전체", "OS 커널", "IP 주소"], "a": 1}, {"s": "소프트웨어 설계", "q": "XP 개발 방법론의 핵심 가치가 아닌 것은?", "o": ["용기", "의사소통", "피드백", "독점"], "a": 4}, {"s": "소프트웨어 설계", "q": "프로토타입 모델의 장점으로 가장 적절한 것은?", "o": ["요구사항 파악 용이", "문서 제거", "테스트 불필요", "비용 무한 증가"], "a": 1}, {"s": "소프트웨어 설계", "q": "소프트웨어 아키텍처 스타일 중 계층 구조를 사용하는 것은?", "o": ["Layered Pattern", "Pipe-Filter", "Broker", "Peer-to-Peer"], "a": 1}, {"s": "소프트웨어 개발", "q": "소프트웨어 테스트에서 내부 구조를 기준으로 수행하는 테스트는?", "o": ["블랙박스 테스트", "화이트박스 테스트", "인수 테스트", "베타 테스트"], "a": 2}, {"s": "소프트웨어 개발", "q": "동치 분할 테스트에 대한 설명으로 옳은 것은?", "o": ["입력값을 유효/무효 그룹으로 나누어 대표값을 테스트한다", "모든 경로를 실행한다", "소스코드 문장을 모두 점검한다", "프로그램 성능만 측정한다"], "a": 1}, {"s": "소프트웨어 개발", "q": "형상관리 도구의 주요 기능이 아닌 것은?", "o": ["버전 관리", "변경 관리", "빌드 관리", "전압 관리"], "a": 4}, {"s": "소프트웨어 개발", "q": "자료구조 중 LIFO 구조는?", "o": ["Queue", "Stack", "Tree", "Graph"], "a": 2}, {"s": "소프트웨어 개발", "q": "큐 Queue의 특징은?", "o": ["LIFO", "FIFO", "임의 삭제만 가능", "계층 구조"], "a": 2}, {"s": "소프트웨어 개발", "q": "정렬 알고리즘 중 평균 시간복잡도가 O(n log n)인 것은?", "o": ["삽입 정렬", "버블 정렬", "퀵 정렬", "선택 정렬"], "a": 3}, {"s": "소프트웨어 개발", "q": "해싱의 특징으로 가장 적절한 것은?", "o": ["빠른 검색을 위해 해시 함수를 사용한다", "항상 정렬 상태를 유지한다", "트리 순회만 지원한다", "중복 키를 반드시 허용한다"], "a": 1}, {"s": "소프트웨어 개발", "q": "빌드 자동화 도구로 볼 수 없는 것은?", "o": ["Jenkins", "Gradle", "Maven", "Photoshop"], "a": 4}, {"s": "소프트웨어 개발", "q": "단위 테스트에서 테스트 드라이버가 필요한 경우는?", "o": ["상위 모듈 없이 하위 모듈을 테스트할 때", "완성된 시스템을 운영할 때", "사용자 교육을 할 때", "네트워크 장비를 교체할 때"], "a": 1}, {"s": "소프트웨어 개발", "q": "테스트 오라클의 유형이 아닌 것은?", "o": ["참 오라클", "샘플링 오라클", "휴리스틱 오라클", "물리 오라클"], "a": 4}, {"s": "소프트웨어 개발", "q": "알파 테스트에 대한 설명으로 옳은 것은?", "o": ["개발자 환경에서 사용자가 테스트한다", "실제 운영환경에서 불특정 다수가 테스트한다", "코드 컴파일만 수행한다", "데이터베이스 정규화 과정이다"], "a": 1}, {"s": "소프트웨어 개발", "q": "인터페이스 구현 검증 도구가 아닌 것은?", "o": ["xUnit", "STAF", "FitNesse", "ERD"], "a": 4}, {"s": "소프트웨어 개발", "q": "회귀 테스트의 목적은?", "o": ["변경 후 기존 기능 이상 여부 확인", "신규 직원 채용", "디스크 포맷", "IP 주소 할당"], "a": 1}, {"s": "소프트웨어 개발", "q": "화이트박스 테스트 기법이 아닌 것은?", "o": ["기초 경로 검사", "조건 검사", "루프 검사", "동등 분할"], "a": 4}, {"s": "소프트웨어 개발", "q": "정적 테스트의 특징은?", "o": ["실행 없이 검토", "실행 후 분석", "운영 중 테스트", "부하 테스트"], "a": 1}, {"s": "소프트웨어 개발", "q": "하향식 통합 테스트에 필요한 것은?", "o": ["Stub", "Driver", "Compiler", "Linker"], "a": 1}, {"s": "소프트웨어 개발", "q": "디버깅의 목적으로 가장 적절한 것은?", "o": ["오류 원인 제거", "속도 감소", "메모리 삭제", "문서 제거"], "a": 1}, {"s": "소프트웨어 개발", "q": "Git에서 로컬 변경사항을 원격 저장소로 보내는 명령은?", "o": ["push", "pull", "clone", "fork"], "a": 1}, {"s": "소프트웨어 개발", "q": "DRM 구성 요소 중 콘텐츠 이용 권리 정보는?", "o": ["패키저", "클리어링 하우스", "라이선스", "보안 컨테이너"], "a": 3}, {"s": "소프트웨어 개발", "q": "EAI 구축 유형 중 허브 중심 연결 방식은?", "o": ["Point-to-Point", "Hub & Spoke", "Message Bus", "Hybrid"], "a": 2}, {"s": "데이터베이스 구축", "q": "관계형 데이터베이스에서 튜플은 무엇을 의미하는가?", "o": ["행", "열", "도메인", "스키마"], "a": 1}, {"s": "데이터베이스 구축", "q": "제1정규형의 조건은?", "o": ["속성값이 원자값이어야 한다", "부분 함수 종속을 제거한다", "이행 함수 종속을 제거한다", "결정자가 후보키여야 한다"], "a": 1}, {"s": "데이터베이스 구축", "q": "제2정규형은 1NF를 만족하고 무엇을 제거해야 하는가?", "o": ["부분 함수 종속", "이행 함수 종속", "다치 종속", "조인 종속"], "a": 1}, {"s": "데이터베이스 구축", "q": "제3정규형은 2NF를 만족하고 무엇을 제거해야 하는가?", "o": ["이행 함수 종속", "부분 함수 종속", "원자값", "기본키"], "a": 1}, {"s": "데이터베이스 구축", "q": "트랜잭션의 ACID 특성이 아닌 것은?", "o": ["Atomicity", "Consistency", "Isolation", "Dependency"], "a": 4}, {"s": "데이터베이스 구축", "q": "SQL 명령어 중 DDL에 해당하는 것은?", "o": ["CREATE", "SELECT", "INSERT", "UPDATE"], "a": 1}, {"s": "데이터베이스 구축", "q": "SQL 명령어 중 DML에 해당하는 것은?", "o": ["GRANT", "COMMIT", "SELECT", "CREATE"], "a": 3}, {"s": "데이터베이스 구축", "q": "SQL 명령어 중 DCL에 해당하는 것은?", "o": ["GRANT", "INSERT", "DELETE", "ALTER"], "a": 1}, {"s": "데이터베이스 구축", "q": "기본키의 특징으로 옳은 것은?", "o": ["NULL 값을 가질 수 없다", "중복이 가능하다", "반드시 외래키여야 한다", "한 테이블에 무한히 지정한다"], "a": 1}, {"s": "데이터베이스 구축", "q": "외래키의 목적은?", "o": ["참조 무결성 유지", "중복 데이터 강제", "인덱스 제거", "트랜잭션 삭제"], "a": 1}, {"s": "데이터베이스 구축", "q": "뷰 View에 대한 설명으로 옳은 것은?", "o": ["하나 이상의 테이블에서 유도된 가상 테이블", "물리적으로만 저장되는 원본 테이블", "운영체제 프로세스", "네트워크 주소"], "a": 1}, {"s": "데이터베이스 구축", "q": "인덱스의 장점은?", "o": ["검색 속도 향상", "항상 저장공간 감소", "삽입 속도 무조건 향상", "무결성 제거"], "a": 1}, {"s": "데이터베이스 구축", "q": "데이터베이스 이상 현상이 아닌 것은?", "o": ["삽입 이상", "삭제 이상", "갱신 이상", "컴파일 이상"], "a": 4}, {"s": "데이터베이스 구축", "q": "병행제어의 목적으로 옳은 것은?", "o": ["동시 트랜잭션의 일관성 보장", "디스크 용량 증가", "CPU 제거", "테이블명 자동 번역"], "a": 1}, {"s": "데이터베이스 구축", "q": "로킹 기법에서 공유 잠금은 주로 어떤 연산에 사용되는가?", "o": ["읽기", "쓰기", "삭제 전용", "커밋 금지"], "a": 1}, {"s": "데이터베이스 구축", "q": "데이터베이스 회복 기법에서 로그를 이용해 장애 이전 상태로 되돌리는 작업은?", "o": ["UNDO", "JOIN", "PROJECT", "SELECT"], "a": 1}, {"s": "데이터베이스 구축", "q": "관계대수 연산 중 조건을 만족하는 행을 추출하는 것은?", "o": ["SELECT", "PROJECT", "JOIN", "DIVISION"], "a": 1}, {"s": "데이터베이스 구축", "q": "ERD에서 개체 간 관계를 표현하는 것은?", "o": ["마름모", "사각형", "타원", "이중선"], "a": 1}, {"s": "데이터베이스 구축", "q": "후보키의 특징으로 옳은 것은?", "o": ["유일성과 최소성 만족", "NULL 허용", "중복 가능", "외래키 필수"], "a": 1}, {"s": "데이터베이스 구축", "q": "COMMIT의 의미는?", "o": ["변경사항 확정", "변경 취소", "테이블 삭제", "계정 생성"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "C언어에서 배열 인덱스는 보통 몇부터 시작하는가?", "o": ["0", "1", "-1", "10"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "C언어에서 포인터 변수는 무엇을 저장하는가?", "o": ["주소값", "문자열 길이만", "소스코드", "컴파일러"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "Java에서 클래스 상속에 사용하는 키워드는?", "o": ["extends", "implements", "include", "using"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "Python에서 리스트의 마지막 요소를 가리키는 인덱스는?", "o": ["-1", "0", "1", "last"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "운영체제의 목적이 아닌 것은?", "o": ["자원 관리", "사용자 편의 제공", "처리 능력 향상", "소스코드 표절"], "a": 4}, {"s": "프로그래밍 언어 활용", "q": "프로세스 상태 전이 중 실행 상태에서 입출력 요청 시 이동하는 상태는?", "o": ["대기 상태", "준비 상태", "종료 상태", "생성 상태"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "스케줄링 기법 중 비선점 방식은?", "o": ["FCFS", "Round Robin", "SRT", "선점형 우선순위"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "HRN 스케줄링의 우선순위 계산식은?", "o": ["(대기시간+서비스시간)/서비스시간", "서비스시간/대기시간", "대기시간-서비스시간", "서비스시간×대기시간"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "교착상태 발생 조건이 아닌 것은?", "o": ["상호배제", "점유와 대기", "비선점", "선점 가능"], "a": 4}, {"s": "프로그래밍 언어 활용", "q": "페이지 교체 알고리즘 중 오랫동안 사용되지 않은 페이지를 교체하는 것은?", "o": ["LRU", "FIFO", "OPT", "LFU"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "OSI 7계층 중 종단 간 신뢰성 있는 전송을 담당하는 계층은?", "o": ["전송 계층", "네트워크 계층", "물리 계층", "표현 계층"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "TCP와 UDP에 대한 설명으로 옳은 것은?", "o": ["TCP는 연결형, UDP는 비연결형이다", "TCP는 비연결형, UDP는 연결형이다", "둘 다 항상 연결형이다", "둘 다 전송계층이 아니다"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "IPv4 클래스 C의 기본 서브넷 마스크는?", "o": ["255.255.255.0", "255.0.0.0", "255.255.0.0", "255.255.255.255"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "DNS의 역할은?", "o": ["도메인 이름을 IP 주소로 변환", "파일 압축", "CPU 스케줄링", "메모리 페이징"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "HTTP 기본 포트 번호는?", "o": ["80", "21", "25", "110"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "FTP의 제어 연결 기본 포트는?", "o": ["21", "20", "80", "443"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "IPv6 주소 길이는?", "o": ["128비트", "32비트", "64비트", "256비트"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "ARP의 역할은?", "o": ["IP 주소를 MAC 주소로 변환", "MAC 주소를 URL로 변환", "파일 압축", "라우팅 삭제"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "Round Robin 스케줄링의 특징은?", "o": ["시간 할당량 사용", "비선점 방식", "우선순위 없음", "FIFO 전용"], "a": 1}, {"s": "프로그래밍 언어 활용", "q": "스레드의 장점으로 적절한 것은?", "o": ["응답성 향상", "메모리 완전 분리", "프로세스 제거", "CPU 제거"], "a": 1}, {"s": "정보시스템 구축관리", "q": "소프트웨어 개발 보안의 3대 요소로 적절한 것은?", "o": ["기밀성, 무결성, 가용성", "속도, 색상, 가격", "압축, 삭제, 복사", "입력, 출력, 주석"], "a": 1}, {"s": "정보시스템 구축관리", "q": "SQL Injection 공격의 설명으로 옳은 것은?", "o": ["입력값에 SQL 구문을 삽입해 비정상 질의를 수행한다", "네트워크 케이블을 절단한다", "CPU 온도를 올린다", "메모리만 물리적으로 제거한다"], "a": 1}, {"s": "정보시스템 구축관리", "q": "XSS 공격은 주로 무엇을 삽입하는 공격인가?", "o": ["악성 스크립트", "디스크 파티션", "전원 케이블", "라우터 펌웨어"], "a": 1}, {"s": "정보시스템 구축관리", "q": "DoS 공격의 목적은?", "o": ["서비스 가용성 저하", "데이터 정규화", "코드 재사용", "컴파일 최적화"], "a": 1}, {"s": "정보시스템 구축관리", "q": "암호화 방식 중 공개키와 개인키를 사용하는 것은?", "o": ["비대칭키 암호화", "대칭키 암호화", "해시만", "압축 알고리즘"], "a": 1}, {"s": "정보시스템 구축관리", "q": "해시 함수의 특징으로 옳은 것은?", "o": ["일방향성", "복호화 가능성", "항상 동일 길이 원문 출력", "키 교환 필수"], "a": 1}, {"s": "정보시스템 구축관리", "q": "개인정보 보호를 위해 데이터 일부를 가리는 기법은?", "o": ["마스킹", "스케줄링", "페이징", "컴파일링"], "a": 1}, {"s": "정보시스템 구축관리", "q": "침입차단시스템을 의미하는 것은?", "o": ["Firewall", "Compiler", "Loader", "Scheduler"], "a": 1}, {"s": "정보시스템 구축관리", "q": "침입탐지시스템을 의미하는 것은?", "o": ["IDS", "IDE", "DDL", "DML"], "a": 1}, {"s": "정보시스템 구축관리", "q": "RAID 1의 특징은?", "o": ["미러링", "스트라이핑만", "패리티 전용", "압축"], "a": 1}, {"s": "정보시스템 구축관리", "q": "클라우드 서비스 모델 중 개발 플랫폼을 제공하는 것은?", "o": ["PaaS", "IaaS", "SaaS", "DaaS"], "a": 1}, {"s": "정보시스템 구축관리", "q": "DevOps의 핵심 취지로 적절한 것은?", "o": ["개발과 운영의 협업 및 자동화", "개발과 운영의 완전 분리", "문서 작성 금지", "테스트 제거"], "a": 1}, {"s": "정보시스템 구축관리", "q": "형상관리에서 베이스라인은 무엇인가?", "o": ["공식적으로 승인된 기준 산출물", "임시 메모", "삭제 대상 파일", "무작위 백업"], "a": 1}, {"s": "정보시스템 구축관리", "q": "보안 약점 중 버퍼 오버플로우는 무엇과 관련이 깊은가?", "o": ["할당된 메모리 범위를 초과한 데이터 기록", "정규화", "UML 작성", "라우팅 테이블 정리"], "a": 1}, {"s": "정보시스템 구축관리", "q": "CMMI에서 프로세스가 정량적으로 관리되는 단계는?", "o": ["정량적 관리 단계", "초기 단계", "관리 단계", "최적화 단계"], "a": 1}, {"s": "정보시스템 구축관리", "q": "ITIL은 주로 무엇과 관련 있는가?", "o": ["IT 서비스 관리", "그래픽 디자인", "전자회로 납땜", "물류 포장"], "a": 1}, {"s": "정보시스템 구축관리", "q": "백업 방식 중 전체 데이터를 모두 백업하는 것은?", "o": ["Full Backup", "Incremental Backup", "Differential Backup", "Mirrorless Backup"], "a": 1}, {"s": "정보시스템 구축관리", "q": "취약점 점검 도구가 아닌 것은?", "o": ["Excel 색상표", "Nmap", "Nessus", "OpenVAS"], "a": 1}, {"s": "정보시스템 구축관리", "q": "공개키 기반 구조를 의미하는 것은?", "o": ["PKI", "P2P", "PCB", "PDU"], "a": 1}, {"s": "정보시스템 구축관리", "q": "정보보호 관리체계 인증과 관련 있는 용어는?", "o": ["ISMS", "HTML", "CSS", "SQL"], "a": 1}];
+let current = [];
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+
+function makeExam(){
+  current = shuffle(BANK).slice(0, 100);
+  const box = document.getElementById('exam');
+  box.innerHTML = '';
+  current.forEach((q, idx) => {
+    const no = idx + 1;
+    const div = document.createElement('div');
+    div.className = 'q';
+    div.id = 'qbox' + no;
+    div.dataset.answer = q.a;
+    let html = `<div class="badge">${q.s}</div><h3>${no}. ${q.q}</h3>`;
+    q.o.forEach((opt, i) => {
+      html += `<label id="q${no}o${i+1}"><input type="radio" name="q${no}" value="${i+1}">${i+1}. ${opt}</label>`;
+    });
+    div.innerHTML = html;
+    box.appendChild(div);
+  });
+  document.getElementById('result').style.display='none';
+  window.scrollTo(0,0);
+}
+
+function gradeExam(){
+  let score=0, unanswered=0;
+  let subjects={"소프트웨어 설계":[0,0],"소프트웨어 개발":[0,0],"데이터베이스 구축":[0,0],"프로그래밍 언어 활용":[0,0],"정보시스템 구축관리":[0,0]};
+
+  current.forEach((q, idx) => {
+    const no = idx + 1;
+    const ans = q.a;
+    subjects[q.s][1]++;
+    for(let j=1;j<=4;j++){
+      const label=document.getElementById(`q${no}o${j}`);
+      label.classList.remove('correct','wrong');
+    }
+    const checked=document.querySelector(`input[name="q${no}"]:checked`);
+    if(!checked){
+      unanswered++;
+      document.getElementById(`q${no}o${ans}`).classList.add('correct');
+      return;
+    }
+    const val=Number(checked.value);
+    if(val===ans){
+      score++;
+      subjects[q.s][0]++;
+      document.getElementById(`q${no}o${val}`).classList.add('correct');
+    } else {
+      document.getElementById(`q${no}o${val}`).classList.add('wrong');
+      document.getElementById(`q${no}o${ans}`).classList.add('correct');
+    }
+  });
+
+  let fail=false;
+  let html=`<b>총점: ${score} / ${current.length}점</b><br>미응답: ${unanswered}문제<br><br>`;
+  for(const [name, arr] of Object.entries(subjects)){
+    if(arr[1]===0) continue;
+    const rate = Math.round(arr[0]/arr[1]*100);
+    const danger = rate < 40;
+    if(danger) fail=true;
+    html += `${name}: ${arr[0]}/${arr[1]}문제 (${rate}점 환산)${danger?' ⚠ 과락':''}<br>`;
+  }
+  html += `<br>판정: ${score>=60 && !fail ? '합격권' : '불합격/과락 위험'}`;
+  const result=document.getElementById('result');
+  result.innerHTML=html;
+  result.style.display='block';
+  window.scrollTo(0,0);
+}
+
+function resetExam(){
+  document.querySelectorAll('input[type=radio]').forEach(i=>i.checked=false);
+  document.querySelectorAll('label').forEach(l=>l.classList.remove('correct','wrong'));
+  document.getElementById('result').style.display='none';
+  window.scrollTo(0,0);
+}
+
+document.getElementById('newBtn').addEventListener('click', makeExam);
+document.getElementById('gradeBtn').addEventListener('click', gradeExam);
+document.getElementById('resetBtn').addEventListener('click', resetExam);
+makeExam();
+</script>
+</body>
+</html>
